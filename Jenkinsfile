@@ -13,18 +13,18 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                bat 'npm test e || exit /b 0' // Allows pipeline to continue despite test failures
+                bat 'npm test || exit /b 0' // Allows pipeline to continue despite test failures
             }
         }
         stage('Generate Coverage Report') {
             steps {
                 // Ensure coverage report exists
-                bat 'npm run coverage e || exit /b 0'
+                bat 'npm run coverage || exit /b 0'
             }
         }
         stage('NPM Audit (Security Scan)') {
             steps {
-                bat 'npm audit e || exit /b 0' // This will show known CVEs in the output
+                bat 'npm audit || exit /b 0' // This will show known CVEs in the output
             }
         }
     }
